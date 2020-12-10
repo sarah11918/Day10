@@ -13,13 +13,22 @@ function lines(data) {
 function sortNumbers(data) {
   let sortedNumbers = data.map(number => parseInt(number)).sort((a, b) => a - b)
   let deviceJolt = sortedNumbers[sortedNumbers.length -1] + 3
-  return [0,...sortedNumbers, deviceJolt]
+  let sortedAdapters =  [0,...sortedNumbers, deviceJolt]
+  return sortedAdapters
 }
 
 // HERE, I HAVE MY ARRAY OF SORTED ADAPTORS, INCLUDING OUTLET AND DEVICE
 
+
+function getOptionsForTheNextAdapter(allAdapters, previousAdapter) {
+  let nextPossibleAdapters = allAdapters.filter(adapter => (previousAdapter < adapter)).filter(adapter => adapter <= previousAdapter + 3)
+  return {previousAdapter, nextPossibleAdapters}
+}
+
+
+
 getAllData()
 .then(lines)
 .then(sortNumbers)
-//.then(numbers => checkAllPosibleConsecutiveNumberLengths(numbers,373803594))
+.then(numbers => getOptionsForTheNextAdapter(numbers,0))
 .then(result => console.log(result)) 
