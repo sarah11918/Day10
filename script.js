@@ -1,4 +1,4 @@
-let dataFile = 'day10-example.txt' //-example (answer:19208) or -puzzle
+let dataFile = 'day10-tinyexample.txt' //-example (answer:19208) or -puzzle
 
 async function getAllData() {
   let response = await fetch(dataFile)
@@ -32,10 +32,13 @@ function getAllNextAdapterOptions(allAdapters) {
 
 }
 
-
+function addAnAdapter(adapterObjects) {
+  console.log(adapterObjects[0])
+}
 
 getAllData()
 .then(lines)
 .then(sortNumbers)
 .then(numbers => getAllNextAdapterOptions(numbers))
+.then(adapters => addAnAdapter(adapters))
 .then(result => console.log(result)) 
