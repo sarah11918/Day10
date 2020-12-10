@@ -16,6 +16,8 @@ function sortNumbers(data) {
   return [0,...sortedNumbers, deviceJolt]
 }
 
+// HERE, I HAVE MY ARRAY OF SORTED ADAPTORS, INCLUDING OUTLET AND DEVICE
+
 getAllData()
 .then(lines)
 .then(sortNumbers)
