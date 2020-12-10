@@ -22,7 +22,8 @@ function sortNumbers(data) {
 
 function getOptionsForTheNextAdapter(allAdapters, previousAdapter) {
   let nextPossibleAdapters = allAdapters.filter(adapter => (previousAdapter < adapter)).filter(adapter => adapter <= previousAdapter + 3)
-  return {previousAdapter, nextPossibleAdapters}
+  let nextOptionsLength = nextPossibleAdapters.length
+  return {previousAdapter, nextPossibleAdapters, nextOptionsLength}
 }
 
 function getAllNextAdapterOptions(allAdapters) {
