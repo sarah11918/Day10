@@ -25,10 +25,16 @@ function getOptionsForTheNextAdapter(allAdapters, previousAdapter) {
   return {previousAdapter, nextPossibleAdapters}
 }
 
+function getAllNextAdapterOptions(allAdapters) {
+  
+  return allAdapters.map(adapter => getOptionsForTheNextAdapter(allAdapters, adapter))
+
+}
+
 
 
 getAllData()
 .then(lines)
 .then(sortNumbers)
-.then(numbers => getOptionsForTheNextAdapter(numbers,0))
+.then(numbers => getAllNextAdapterOptions(numbers))
 .then(result => console.log(result)) 
