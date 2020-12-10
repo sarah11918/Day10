@@ -1,5 +1,7 @@
+let dataFile = 'day10-example.txt' //-example (answer:19208) or -puzzle
+
 async function getAllData() {
-  let response = await fetch('day10.txt')
+  let response = await fetch(dataFile)
   let data = await response.text()
   return data
 }
